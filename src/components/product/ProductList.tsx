@@ -11,7 +11,7 @@ type props = {
 
 function ProductList({ data }: props) {
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
       {data.map((product, i) => (
         <ProductCard
           key={product.id}

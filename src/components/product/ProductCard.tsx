@@ -11,7 +11,8 @@ type Props = {
 function ProductCard({ id, name, price, images, rating }: Props) {
   return (
     <Link
-      className="mx-auto flex w-64 flex-col justify-between"
+      className="mx-auto flex flex-col justify-between border border-gray-200 rounded p-4 hover:shadow-lg transition duration-300 ease-in-out "
+      style={{ maxWidth: "300px", maxHeight: "380px" }}
       to={`/product/${id}`}
     >
       <img src={images[0]} alt={name} className="mb-4 w-full rounded" />
