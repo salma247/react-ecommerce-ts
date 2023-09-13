@@ -14,6 +14,7 @@ type ProductCarouselProps = {
 
 const ProductCarousel = ({ data }: ProductCarouselProps) => {
   const [show, setShow] = useState(window.innerWidth / 350);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,24 +24,31 @@ const ProductCarousel = ({ data }: ProductCarouselProps) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, [window.innerWidth]);
+
+  const rightArrow = (
+    <button className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 transition-all duration-500 hover:bg-primary hover:text-white">
+      <FaArrowRight />
+    </button>
+  );
+
+  const leftArrow = (
+    <button className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 transition-all duration-500 hover:bg-primary hover:text-white">
+      <FaArrowLeft />
+    </button>
+  );
+
   return (
     <div className="w-full">
       <Carousel
         show={show}
-        slide={2}
-        infinite={false}
+        slide={1}
+        swiping={isMobile}
         dynamic
         className="flex w-full items-center justify-center gap-2"
-        rightArrow={
-          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 transition-all duration-500 hover:bg-primary hover:text-white">
-            <FaArrowRight />
-          </button>
-        }
-        leftArrow={
-          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 transition-all duration-500 hover:bg-primary hover:text-white">
-            <FaArrowLeft />
-          </button>
-        }
+        {...(!isMobile && { rightArrow, leftArrow })}
       >
         {data.map((product, i) => (
           <ProductCard
