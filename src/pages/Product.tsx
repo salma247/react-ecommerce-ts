@@ -32,7 +32,7 @@ function Product() {
   if (!data) return <div>Product not found</div>;
 
   return (
-    <div className="grid grid-cols-1 justify-center gap-8 py-4 md:grid-cols-2">
+    <div className="grid grid-cols-1 justify-center gap-8 py-4 md:grid-cols-2 w-11/12 mx-auto xl:w-8/12">
       <ProductImageGallery images={data.images} />
       <div className="flex flex-col justify-center">
         <h1 className="mb-4 text-2xl font-bold">{data.name}</h1>
