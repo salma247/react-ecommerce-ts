@@ -3,26 +3,30 @@ import shoes from "../data/shoes.json"
 import { getPaginatedData } from "../libs/pagination"
 import ProductList from "../components/product/ProductList"
 import ProductPagination from "../components/product/ProductPagination"
+import { useParams, useNavigate } from "react-router-dom"
 
 const data = shoes.filter((item) => {
   return item.categories.includes("women")
 })
 
 function Women() {
-  const [page, setPage] = useState(1)
-  const [pages, setPages] = useState(Math.ceil(data.length / 6));
+  const { page } = useParams()
+  const navigate = useNavigate()
+  const [pageNo, setPageNo] = useState(page ? parseInt(page) : 1)
+  const [pages, setPages] = useState(Math.ceil(data.length / 12))
   const [paginatedData, setPaginatedData] = useState(
-    getPaginatedData(data, page, 6)
+    getPaginatedData(data, pageNo, 12)
   )
 
   const handlePageChange = (page: number) => {
-    setPage(page)
-    setPaginatedData(getPaginatedData(data, page, 6))
+    setPageNo(page)
+    setPaginatedData(getPaginatedData(data, page, 12))
+    navigate(`/women/${page}`)
   }
 
   return <div>
     <ProductList data={paginatedData} />
-    <ProductPagination page={page} handlePageChange={handlePageChange} data={data} pages={pages} />
+    <ProductPagination page={pageNo} handlePageChange={handlePageChange} data={data} pages={pages} />
   </div>
 }
 

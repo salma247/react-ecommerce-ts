@@ -3,24 +3,28 @@ import { useState } from "react";
 import { getPaginatedData } from "../libs/pagination";
 import ProductList from "../components/product/ProductList";
 import ProductPagination from "../components/product/ProductPagination";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Collection() {
-  const [page, setPage] = useState(1);
-  const [pages, setPages] = useState(Math.ceil(shoes.length / 6));
+  const { page } = useParams();
+  const navigate = useNavigate();
+  const [pageNo, setPageNo] = useState(page ? parseInt(page) : 1);
+  const [pages, setPages] = useState(Math.ceil(shoes.length / 12));
   const [paginatedData, setPaginatedData] = useState(
-    getPaginatedData(shoes, page, 6)
+    getPaginatedData(shoes, pageNo, 12)
   );
 
   const handlePageChange = (page: number) => {
-    setPage(page);
-    setPaginatedData(getPaginatedData(shoes, page, 6));
+    setPageNo(page);
+    setPaginatedData(getPaginatedData(shoes, page, 12));
+    navigate(`/collection/${page}`);
   };
 
   return (
     <div>
       <ProductList data={paginatedData} />
       <ProductPagination
-        page={page}
+        page={pageNo}
         handlePageChange={handlePageChange}
         data={shoes}
         pages={pages}
