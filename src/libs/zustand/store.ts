@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 type CartItems = {
-    id: number;
+    cartId: string;
     name: string;
     price: number;
     quantity: number;
@@ -13,7 +13,7 @@ type CartState = {
     cartItems: CartItems[];
     getCartItems: () => CartItems[];
     addToCart: (item: CartItems) => void;
-    removeFromCart: (id: number) => void;
+    removeFromCart: (id: string) => void;
     clearCart: () => void;
 };
 
@@ -37,9 +37,9 @@ export const useCartStore = create<CartState>((set, get) => ({
             return { cartItems };
         });
     },
-    removeFromCart: (id) => {
+    removeFromCart: (cartId) => {
         set((state) => {
-            const cartItems = state.cartItems.filter((item) => item.id !== id);
+            const cartItems = state.cartItems.filter((item) => item.cartId !== cartId);
             localStorage.setItem('cart', JSON.stringify(cartItems));
             return { cartItems };
         });

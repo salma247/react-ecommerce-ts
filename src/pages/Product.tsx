@@ -4,6 +4,7 @@ import ProductImageGallery from "../components/product/ProductGallary";
 import products from "../data/shoes.json";
 import { FaCartPlus } from "react-icons/fa";
 import { useCartStore } from "../libs/zustand/store";
+import { v4 as uuidv4 } from "uuid";
 
 function Product() {
   const { id } = useParams<{ id: string }>();
@@ -34,7 +35,7 @@ function Product() {
       setError("Please select a size");
       return;
     }
-    const product = { ...(data as any), quantity, size: selectedSize };
+    const product = { ...(data as any), quantity, size: selectedSize, cartId: uuidv4() };
     addToCart(product);
     setMessage("Product added to cart");
   };

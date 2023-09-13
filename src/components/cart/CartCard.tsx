@@ -4,7 +4,7 @@ import { FaTrash } from "react-icons/fa";
 
 type Props = {
   item: {
-    id: number;
+    cartId: string;
     name: string;
     price: number;
     images: string[];
@@ -26,7 +26,7 @@ function CartCard({ item }: Props) {
       <div className="flex items-center gap-4">
         <button
           className="text-red-500 hover:text-red-600"
-          onClick={() => removeFromCart(item.id)}
+          onClick={() => removeFromCart(item.cartId)}
         >
           <FaTrash />
         </button>

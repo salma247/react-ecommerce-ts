@@ -38,7 +38,7 @@ function Cart() {
             {items && !items.length && <div className="py-2">Cart is empty 😢</div>}
             {items &&
               items.map((item) => (
-                <CartCard key={item.id} item={item} />
+                <CartCard key={item.cartId} item={item} />
               ))}
 
             <div className="flex justify-between">
