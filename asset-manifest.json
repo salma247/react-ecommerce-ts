@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "http://localhost:3000/static/css/main.d20e78f2.css",
-    "main.js": "http://localhost:3000/static/js/main.ff813fdd.js",
-    "static/js/787.32d3dd07.chunk.js": "http://localhost:3000/static/js/787.32d3dd07.chunk.js",
-    "static/media/all-men.jpg": "http://localhost:3000/static/media/all-men.b247113e012e50bfc68f.jpg",
-    "static/media/all-women.jpg": "http://localhost:3000/static/media/all-women.b0289d1065baeab402b8.jpg",
-    "static/media/hero.jpg": "http://localhost:3000/static/media/hero.d5f3e675ddd5d2fc0357.jpg",
-    "static/media/all-collection.jpg": "http://localhost:3000/static/media/all-collection.87172807fcd5baebdc46.jpg",
-    "static/media/bg-2.jpeg": "http://localhost:3000/static/media/bg-2.b69366585799443b0fea.jpeg",
-    "static/media/sneakers.svg": "http://localhost:3000/static/media/sneakers.4fe9c1e86cf9bf600f0c239f6a6e5317.svg",
-    "index.html": "http://localhost:3000/index.html",
-    "static/media/icon-cart.svg": "http://localhost:3000/static/media/icon-cart.539ec608f50e707c94d583ec11acf99d.svg",
-    "static/media/icon-close.svg": "http://localhost:3000/static/media/icon-close.c390448669f3a8a4c4b2ada2f9938959.svg",
-    "static/media/icon-menu.svg": "http://localhost:3000/static/media/icon-menu.c6107d03f1edcf73523ebd8cbc50a443.svg",
-    "main.d20e78f2.css.map": "http://localhost:3000/static/css/main.d20e78f2.css.map",
-    "main.ff813fdd.js.map": "http://localhost:3000/static/js/main.ff813fdd.js.map",
-    "787.32d3dd07.chunk.js.map": "http://localhost:3000/static/js/787.32d3dd07.chunk.js.map"
+    "main.css": "/react-ecommerce-ts/static/css/main.d20e78f2.css",
+    "main.js": "/react-ecommerce-ts/static/js/main.9d5faa2a.js",
+    "static/js/787.32d3dd07.chunk.js": "/react-ecommerce-ts/static/js/787.32d3dd07.chunk.js",
+    "static/media/all-men.jpg": "/react-ecommerce-ts/static/media/all-men.b247113e012e50bfc68f.jpg",
+    "static/media/all-women.jpg": "/react-ecommerce-ts/static/media/all-women.b0289d1065baeab402b8.jpg",
+    "static/media/hero.jpg": "/react-ecommerce-ts/static/media/hero.d5f3e675ddd5d2fc0357.jpg",
+    "static/media/all-collection.jpg": "/react-ecommerce-ts/static/media/all-collection.87172807fcd5baebdc46.jpg",
+    "static/media/bg-2.jpeg": "/react-ecommerce-ts/static/media/bg-2.b69366585799443b0fea.jpeg",
+    "static/media/sneakers.svg": "/react-ecommerce-ts/static/media/sneakers.4fe9c1e86cf9bf600f0c239f6a6e5317.svg",
+    "index.html": "/react-ecommerce-ts/index.html",
+    "static/media/icon-cart.svg": "/react-ecommerce-ts/static/media/icon-cart.539ec608f50e707c94d583ec11acf99d.svg",
+    "static/media/icon-close.svg": "/react-ecommerce-ts/static/media/icon-close.c390448669f3a8a4c4b2ada2f9938959.svg",
+    "static/media/icon-menu.svg": "/react-ecommerce-ts/static/media/icon-menu.c6107d03f1edcf73523ebd8cbc50a443.svg",
+    "main.d20e78f2.css.map": "/react-ecommerce-ts/static/css/main.d20e78f2.css.map",
+    "main.9d5faa2a.js.map": "/react-ecommerce-ts/static/js/main.9d5faa2a.js.map",
+    "787.32d3dd07.chunk.js.map": "/react-ecommerce-ts/static/js/787.32d3dd07.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d20e78f2.css",
-    "static/js/main.ff813fdd.js"
+    "static/js/main.9d5faa2a.js"
   ]
 }
