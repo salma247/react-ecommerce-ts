@@ -13,12 +13,12 @@ type ProductCarouselProps = {
 };
 
 const ProductCarousel = ({ data }: ProductCarouselProps) => {
-  const [show, setShow] = useState(window.innerWidth / 350);
+  const [show, setShow] = useState(window.innerWidth / 300);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const handleResize = () => {
-      setShow(window.innerWidth / 350);
+      setShow(window.innerWidth / 300);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -44,7 +44,7 @@ const ProductCarousel = ({ data }: ProductCarouselProps) => {
     <div className="w-full">
       <Carousel
         show={show}
-        slide={1}
+        slide={isMobile ? 1 : 3}
         swiping={isMobile}
         dynamic
         className="flex w-full items-center justify-center gap-2"
