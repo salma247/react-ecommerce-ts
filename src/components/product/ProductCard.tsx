@@ -6,9 +6,10 @@ type Props = {
   price: number;
   rating?: number;
   images: string[];
+  margin?: string;
 };
 
-function ProductCard({ id, name, price, images, rating }: Props) {
+function ProductCard({ id, name, price, images, rating, margin }: Props) {
   return (
     <Link
       className="mx-auto w-60 flex flex-col justify-between border border-gray-200 rounded p-4 hover:shadow-lg transition duration-300 ease-in-out"

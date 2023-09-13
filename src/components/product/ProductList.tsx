@@ -20,6 +20,7 @@ function ProductList({ data }: props) {
           price={product.price}
           images={product.images}
           rating={product.rating}
+          margin="mx-auto"
         />
       ))}
     </div>
