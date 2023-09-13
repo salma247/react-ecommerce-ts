@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCartStore } from "../../libs/zustand/store";
 import close from "../../images/icon-close.svg";
 import cart from "../../images/icon-cart.svg";
@@ -9,14 +9,24 @@ function Cart() {
   const toggle = () => setOpen(!open);
   const getItems = useCartStore((state) => state.getCartItems);
   const items = useCartStore((state) => state.cartItems);
+  const cartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     getItems();
-    console.log(items);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [cartRef]);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={cartRef}>
       <button
         className="relative flex items-center px-3 py-2 text-gray-300 hover:border-white hover:text-white"
         onClick={toggle}
