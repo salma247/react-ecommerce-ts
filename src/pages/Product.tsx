@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProductImageGallery from "../components/product/ProductGallary";
 import products from "../data/shoes.json";
-import {FaCartPlus} from "react-icons/fa"
+import { FaCartPlus } from "react-icons/fa";
 import { useCartStore } from "../libs/zustand/store";
 
 function Product() {
   const { id } = useParams<{ id: string }>();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState(0);
+  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const addToCart = useCartStore((state) => state.addToCart);
+  useEffect(() => {
+    if (message) {
+      const timeout = setTimeout(() => {
+        setMessage("");
+      }, 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [message]);
 
   if (!id) return <div>Product not found</div>;
   const data = products.find((item) => item.id === +id);
@@ -25,37 +34,48 @@ function Product() {
       setError("Please select a size");
       return;
     }
-    const product = { ...data as any, quantity, size: selectedSize };
+    const product = { ...(data as any), quantity, size: selectedSize };
     addToCart(product);
+    setMessage("Product added to cart");
   };
 
   if (!data) return <div>Product not found</div>;
 
   return (
-    <div className="grid grid-cols-1 justify-center gap-8 py-4 md:grid-cols-2 w-11/12 mx-auto xl:w-8/12">
+    <div className="mx-auto grid w-11/12 grid-cols-1 justify-center gap-8 py-4 md:grid-cols-2 xl:w-8/12">
       <ProductImageGallery images={data.images} />
-      <div className="flex flex-col justify-center">
+      <div className="relative flex flex-col justify-center">
+        {message && (
+          <p className="absolute left-0 right-0 top-0 mb-4 rounded-lg bg-green-100 py-2 text-center text-green-800 ">
+            {message}
+          </p>
+        )}
         <h1 className="mb-4 text-2xl font-bold">{data.name}</h1>
         <p className="mb-4 text-gray-400">{data.description}</p>
         <p className="mb-4 text-gray-400">{data.price}$</p>
-        { data.discount && <p className="mb-4 text-gray-400 line-through">{data.price}$</p>}
-        <div className="flex items-center gap-2 mb-4">
+        {data.discount && (
+          <p className="mb-4 text-gray-400 line-through">{data.price}$</p>
+        )}
+        <div className="mb-4 flex items-center gap-2">
           <p className="text-gray-400">Category:</p>
           <div className="flex gap-2">
             {data.categories.map((category) => (
-              <p className="text-gray-400 border border-primary rounded-lg px-2 py-1">
+              <p
+                className="rounded-lg border border-primary px-2 py-1 text-gray-400"
+                key={category}
+              >
                 {category}
-              </p> 
+              </p>
             ))}
           </div>
         </div>
         {/* choose size */}
-        <div className="mb-4 flex gap-2 items-center">
+        <div className="mb-4 flex items-center gap-2">
           <p className="text-gray-400">Size:</p>
           {data.sizes.map((size) => (
             <button
               key={size}
-              className={`w-10 h-10 rounded-full border border-gray-200 transition-all duration-500 hover:border-primary ${
+              className={`h-10 w-10 rounded-full border border-gray-200 transition-all duration-500 hover:border-primary ${
                 selectedSize === size
                   ? "bg-primary text-white"
                   : "bg-gray-100 text-gray-400"
@@ -87,12 +107,15 @@ function Product() {
               +
             </button>
           </div>
-          <button className="w-2/3 rounded-lg bg-primary px-8 py-2 font-semibold text-white transition-all duration-500 flex items-center justify-center gap-2 hover:bg-white hover:text-primary" onClick={handleAddToCart}>
+          <button
+            className="flex w-2/3 items-center justify-center gap-2 rounded-lg bg-primary px-8 py-2 font-semibold text-white transition-all duration-500 hover:bg-white hover:text-primary"
+            onClick={handleAddToCart}
+          >
             <FaCartPlus className="text-lg" />
             Add to cart
           </button>
         </div>
-          {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-500">{error}</p>}
       </div>
     </div>
   );
