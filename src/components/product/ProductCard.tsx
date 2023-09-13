@@ -6,17 +6,19 @@ type Props = {
   price: number;
   rating?: number;
   images: string[];
+  margin?: string;
 };
 
-function ProductCard({ id, name, price, images, rating }: Props) {
+function ProductCard({ id, name, price, images, rating, margin }: Props) {
   return (
     <Link
-      className="mx-2 flex flex-col justify-between border border-gray-200 rounded p-4 hover:shadow-lg transition duration-300 ease-in-out "
-      style={{ maxWidth: "300px", maxHeight: "380px" }}
+      className={`${ margin ? margin : "mx-2"} w-56 flex flex-col justify-between border border-gray-200 rounded p-4 hover:shadow-lg transition duration-300 ease-in-out `}
       to={`/product/${id}`}
     >
       <img src={images[0]} alt={name} className="mb-4 w-full rounded" />
-      <h3 className="text-lg font-semibold">{name}</h3>
+      {/* <h3 className="text-lg font-semibold break-words">{name}</h3> */}
+      {/* if the name is too long, it will break into a new line */}
+      <h3 className="text-lg font-semibold break-words">{name}</h3>
       <div className="flex items-center justify-between">
         <div className="flex gap-2">
           {[...Array(5)].map((_, i) => (
@@ -30,7 +32,7 @@ function ProductCard({ id, name, price, images, rating }: Props) {
         </div>
         <p className="text-gray-500">4.0</p>
       </div>
-      <p className="text-gray-500">${price}</p>
+      <p className="text-gray-500 mb-4">${price}</p>
     </Link>
   );
 }
