@@ -1,6 +1,10 @@
 {
   "name": "sneakers",
+<<<<<<< HEAD
   "homepage": "https://salma247.github.io/react-ecommerce-ts/",
+=======
+  "homepage": "https://salma247.github.io/react-ecommerce-ts",
+>>>>>>> 1c302fb (chore: add gh-pages)
   "version": "0.1.0",
   "private": true,
   "dependencies": {
