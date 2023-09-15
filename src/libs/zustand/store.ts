@@ -1,23 +1,6 @@
 import { create } from 'zustand';
 
-type CartItems = {
-    cartId: string;
-    name: string;
-    price: number;
-    quantity: number;
-    size: number;
-    images: string[];
-};
 
-type CartState = {
-    cartItems: CartItems[];
-    getCartItems: () => CartItems[];
-    addToCart: (item: CartItems) => void;
-    removeFromCart: (id: string) => void;
-    clearCart: () => void;
-};
-
-//localStorage
 const getLocalStorage = () => {
     let cart = localStorage.getItem('cart');
     if (cart) {

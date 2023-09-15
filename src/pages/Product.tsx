@@ -35,7 +35,7 @@ function Product() {
       setError("Please select a size");
       return;
     }
-    const product = { ...(data as any), quantity, size: selectedSize, cartId: uuidv4() };
+    const product = { ...(data as Product), quantity, size: selectedSize, cartId: uuidv4() };
     addToCart(product);
     setMessage("Product added to cart");
   };

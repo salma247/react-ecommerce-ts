@@ -3,13 +3,7 @@ import { useCartStore } from "../../libs/zustand/store";
 import { FaTrash } from "react-icons/fa";
 
 type Props = {
-  item: {
-    cartId: string;
-    name: string;
-    price: number;
-    images: string[];
-    quantity: number;
-  };
+  item: CartItem;
 };
 
 function CartCard({ item }: Props) {

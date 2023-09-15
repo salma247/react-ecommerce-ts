@@ -5,7 +5,7 @@ type Props = {
   page: number;
   pages: number;
   handlePageChange: (page: number) => void;
-  data: any;
+  data: Product[];
 };
 
 const ProductPagination = ({ page, pages, handlePageChange, data }: Props) => {
