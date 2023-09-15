@@ -1,13 +1,10 @@
-import Home from "./pages/Home";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
-import Collection from "./pages/Collection";
-import Men from "./pages/Men";
-import Product from "./pages/Product";
-import Women from "./pages/Women";
-import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 import Footer from "./components/Footer";
-import { useEffect } from "react";
-
+import { Routes, Route } from "react-router-dom";
+import Category from "./pages/Category";
+import Product from "./pages/Product"; 
 
 function App() {
   useEffect(() => {
@@ -22,9 +19,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/collection/*" element={<Collection />} />
-        <Route path="/men/*" element={<Men />} /> 
-        <Route path="/women/*" element={<Women />} />
+        <Route path="/collection/*" element={<Category category="collection" />} />
+        <Route path="/men/*" element={<Category category="men" />} />
+        <Route path="/women/*" element={<Category category="women" />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
