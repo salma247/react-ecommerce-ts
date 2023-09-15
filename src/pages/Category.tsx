@@ -42,7 +42,6 @@ function Category({ category }: Props) {
       <ProductPagination
         page={pageNo}
         handlePageChange={handlePageChange}
-        data={data}
         pages={pages}
       />
     </div>

@@ -1,25 +1,21 @@
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 type Props = {
   page: number;
   pages: number;
   handlePageChange: (page: number) => void;
-  data: Product[];
 };
 
-const ProductPagination = ({ page, pages, handlePageChange, data }: Props) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+const ProductPagination = ({ page, pages, handlePageChange }: Props) => {
+  const paginationRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToPage = () => {
-    if (containerRef.current) {
-      //scroll right to the active page
-      containerRef.current.scrollLeft =
-        (page - 1) * containerRef.current.children[0].clientWidth;
-
-      //scroll to the start if the active page is the first page
+    if (paginationRef.current) {
+      paginationRef.current.scrollLeft =
+        (page - 1) * paginationRef.current.children[0].clientWidth;
       if (page === 1) {
-        containerRef.current.scrollLeft = 0;
+        paginationRef.current.scrollLeft = 0;
       }
     }
   };
@@ -42,7 +38,7 @@ const ProductPagination = ({ page, pages, handlePageChange, data }: Props) => {
         >
           <FaChevronLeft />
         </button>
-        <div className="flex space-x-2 overflow-hidden" ref={containerRef}>
+        <div className="flex space-x-2 overflow-hidden" ref={paginationRef}>
           {Array.from({ length: pages }).map((_, i) => (
             <button
               key={i}
