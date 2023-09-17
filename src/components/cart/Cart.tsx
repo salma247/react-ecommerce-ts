@@ -60,7 +60,7 @@ function Cart() {
                 </div>
               <Link
                 to="/checkout"
-                className="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-light transition-all duration-500"
+                className="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-hover transition-all duration-500"
               >
                 Checkout
               </Link>
