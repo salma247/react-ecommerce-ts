@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useCartStore } from "../../libs/zustand/store";
-import { Link } from "react-router-dom";
 import close from "../../images/icon-close.svg";
 import cart from "../../images/icon-cart.svg";
 import CartCard from "./CartCard";
+import { ButtonLink } from "../button/ButtonLink";
 
 function Cart() {
   const [open, setOpen] = useState(false);
@@ -34,7 +34,7 @@ function Cart() {
       >
         <img src={cart} alt="cart" />
         <span className="absolute bottom-0 right-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-xs text-white">
-          {items && items.length}
+          {items?.length}
         </span>
       </button>
       {open && (
@@ -58,12 +58,13 @@ function Cart() {
                   ${items?.reduce((acc, item) => acc + item.price * item.quantity, 0)}
                 </span>
                 </div>
-              <Link
+             <ButtonLink
                 to="/checkout"
-                className="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-hover transition-all duration-500"
+                variant="primary"
+                size="sm"
               >
                 Checkout
-              </Link>
+              </ButtonLink>
             </div>
           </div>
         </div>

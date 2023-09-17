@@ -15,6 +15,7 @@ import bg2 from "../images/bg-2.jpeg";
 import allMen from "../images/all-men.jpg";
 import allWomen from "../images/all-women.jpg";
 import allCollections from "../images/all-collection.jpg";
+import { ButtonLink } from "../components/button/ButtonLink";
 
 const shoesSample = shoes.slice(0, 6);
 
@@ -28,12 +29,19 @@ function Home() {
           <h1 className="mb-4 font-bold sm:text-lg md:text-2xl lg:text-4xl">
             Rise to the challenge, power your potential
           </h1>
-          <Link
+          {/* <Link
             to="/collection"
             className="mt-4 rounded-full bg-white px-8 py-2 font-semibold text-black transition-all duration-500 hover:bg-primary hover:text-white"
           >
             Shop now
-          </Link>
+          </Link> */}
+          <ButtonLink
+            variant="secondary"
+            size="md"
+            to="/collection"
+          >
+            Shop now
+          </ButtonLink>
         </div>
       </section>
 

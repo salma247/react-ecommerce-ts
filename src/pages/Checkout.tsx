@@ -1,6 +1,5 @@
-import React from "react";
 import { useCartStore } from "../libs/zustand/store";
-import { Link } from "react-router-dom";
+import { ButtonLink } from "../components/button/ButtonLink";
 
 function Checkout() {
   const items = useCartStore((state) => state.cartItems);
@@ -113,12 +112,9 @@ function Checkout() {
             <span className="text-gray-400">Total</span>
             <span className="ml-1 text-xl font-bold">${total}</span>
           </div>
-          <Link
-            to="/checkout"
-            className="hover:bg-primary-hover rounded-full bg-primary px-4 py-2 text-sm text-white transition-all duration-500"
-          >
+          <ButtonLink to="/checkout" variant="primary" size="sm">
             Checkout
-          </Link>
+          </ButtonLink>
         </div>
       </div>
     </div>

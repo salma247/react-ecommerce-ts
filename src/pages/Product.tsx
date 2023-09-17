@@ -5,6 +5,7 @@ import products from "../data/shoes.json";
 import { FaCartPlus } from "react-icons/fa";
 import { useCartStore } from "../libs/zustand/store";
 import { v4 as uuidv4 } from "uuid";
+import { Button } from "../components/button/Button";
 
 function Product() {
   const { id } = useParams<{ id: string }>();
@@ -108,13 +109,14 @@ function Product() {
               +
             </button>
           </div>
-          <button
-            className="flex w-2/3 items-center justify-center gap-2 rounded-lg bg-primary px-8 py-2 font-semibold text-white transition-all duration-500 hover:bg-white hover:text-primary"
+          <Button
             onClick={handleAddToCart}
+            variant="primary"
+            size="md"
+            type="button"
           >
-            <FaCartPlus className="text-lg" />
-            Add to cart
-          </button>
+            <FaCartPlus className="text-lg" /> Add to cart
+          </Button>
         </div>
         {error && <p className="text-red-500">{error}</p>}
       </div>
