@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { Routes, Route } from "react-router-dom";
 import Category from "./pages/Category";
 import Product from "./pages/Product"; 
+import Checkout from "./pages/Checkout";
 
 function App() {
   useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/men/*" element={<Category category="men" />} />
         <Route path="/women/*" element={<Category category="women" />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
       <Footer />

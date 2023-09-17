@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useCartStore } from "../../libs/zustand/store";
+import { Link } from "react-router-dom";
 import close from "../../images/icon-close.svg";
 import cart from "../../images/icon-cart.svg";
 import CartCard from "./CartCard";
@@ -37,7 +38,7 @@ function Cart() {
         </span>
       </button>
       {open && (
-        <div className="absolute right-0 top-10 w-80 bg-gray-100 border border-gray-200 rounded shadow-xl">
+        <div className="absolute right-0 top-10 w-80 bg-gray-100 border border-gray-200 rounded shadow-xl lg:w-96">
           <div className="flex items-center justify-between px-4 py-2">
             <h3 className="text-xl font-bold">Cart</h3>
             <button onClick={toggle}>
@@ -46,14 +47,23 @@ function Cart() {
           </div>
           <div className="px-4 py-2">
             {items && !items.length && <div className="py-2">Cart is empty 😢</div>}
-            {items &&
-              items.map((item) => (
+            {items?.map((item) => (
                 <CartCard key={item.cartId} item={item} />
               ))}
 
             <div className="flex justify-between">
-              <h3 className="font-bold">Total</h3>
-              <p className="font-bold">$100</p>
+              <div className="flex items-center">
+                <span className="text-gray-400">Total</span>
+                <span className="text-xl font-bold ml-1">
+                  ${items?.reduce((acc, item) => acc + item.price * item.quantity, 0)}
+                </span>
+                </div>
+              <Link
+                to="/checkout"
+                className="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-light transition-all duration-500"
+              >
+                Checkout
+              </Link>
             </div>
           </div>
         </div>
