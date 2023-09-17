@@ -4,12 +4,21 @@ import { Link } from "react-router-dom";
 
 function Checkout() {
   const items = useCartStore((state) => state.cartItems);
+  const changeQuantity = useCartStore((state) => state.changeQuantity);
   const total = items?.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0,
   );
 
   if (!items?.length) return <div>Cart is empty</div>;
+
+  const decreaseQuantity = (id: string) => {
+    changeQuantity(id, -1);
+  };
+
+  const increaseQuantity = (id: string) => {
+    changeQuantity(id, 1);
+  };
 
   return (
     <div>
@@ -61,33 +70,36 @@ function Checkout() {
                             <div className="text-sm text-gray-500">
                               size: {item.size}
                             </div>
+                            <div className="text-sm text-gray-500">
+                              ${item.price}
+                            </div>
                           </div>
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 md:px-6">
                         <div className="flex items-center justify-center">
                           <button
-                            className="bg-primary-light w-6 h-8 text-white hover:bg-primary-hover focus:outline-none disabled:bg-gray-200 disabled:text-gray-500"
+                            className="hover:bg-primary-hover h-8 w-6 bg-primary-light text-white focus:outline-none disabled:bg-gray-200 disabled:text-gray-500"
                             disabled={item.quantity === 1}
-                            // onClick={() =>
-                            //   item.quantity > 1 && item.decreaseQuantity()
-                            // }
+                            onClick={() =>
+                              item.quantity > 1 && decreaseQuantity(item.cartId)
+                            }
                           >
                             -
                           </button>
-                          <span className="px-2 font-semibold w-6 h-8 flex items-center text-gray-700">
+                          <span className="flex h-8 w-6 items-center px-2 font-semibold text-gray-700">
                             {item.quantity}
                           </span>
                           <button
-                            className="bg-primary text-white w-6 h-8 hover:bg-primary-hover focus:outline-none"
-                            // onClick={() => item.increaseQuantity()}
+                            className="hover:bg-primary-hover h-8 w-6 bg-primary text-white focus:outline-none"
+                            onClick={() => increaseQuantity(item.cartId)}
                           >
                             +
                           </button>
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 md:px-6">
-                        ${item.price}
+                        ${item.price * item.quantity}
                       </td>
                     </tr>
                   ))}

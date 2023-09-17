@@ -32,5 +32,18 @@ export const useCartStore = create<CartState>((set, get) => ({
             localStorage.removeItem('cart');
             return { cartItems: [] };
         });
+    },
+    changeQuantity: (cartId, value) => {
+        set((state) => {
+            const cartItems = state.cartItems.map((item) => {
+                if (item.cartId === cartId) {
+                    return { ...item, quantity: item.quantity + value };
+                } else {
+                    return item;
+                }
+            });
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            return { cartItems };
+        });
     }
 }));
