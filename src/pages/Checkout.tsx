@@ -67,7 +67,7 @@ function Checkout() {
                       <td className="whitespace-nowrap px-3 py-4 md:px-6">
                         <div className="flex items-center justify-center">
                           <button
-                            className="bg-primary px-2  py-1 text-white hover:bg-primary-light focus:outline-none disabled:bg-gray-200 disabled:text-gray-500"
+                            className="bg-primary-light w-6 h-8 text-white hover:bg-primary-hover focus:outline-none disabled:bg-gray-200 disabled:text-gray-500"
                             disabled={item.quantity === 1}
                             // onClick={() =>
                             //   item.quantity > 1 && item.decreaseQuantity()
@@ -75,11 +75,11 @@ function Checkout() {
                           >
                             -
                           </button>
-                          <span className="px-2 font-semibold text-gray-700">
+                          <span className="px-2 font-semibold w-6 h-8 flex items-center text-gray-700">
                             {item.quantity}
                           </span>
                           <button
-                            className="bg-primary px-2 py-1 text-white hover:bg-primary-light focus:outline-none"
+                            className="bg-primary text-white w-6 h-8 hover:bg-primary-hover focus:outline-none"
                             // onClick={() => item.increaseQuantity()}
                           >
                             +
@@ -103,7 +103,7 @@ function Checkout() {
           </div>
           <Link
             to="/checkout"
-            className="rounded-full bg-primary px-4 py-2 text-sm text-white transition-all duration-500 hover:bg-primary-light"
+            className="hover:bg-primary-hover rounded-full bg-primary px-4 py-2 text-sm text-white transition-all duration-500"
           >
             Checkout
           </Link>
