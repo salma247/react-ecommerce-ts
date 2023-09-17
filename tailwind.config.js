@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       colors: {
         'primary': 'hsl(26, 100%, 55%)',
+        'primary-light': 'hsl(25, 100%, 60%)',
         'secondary': 'hsl(25, 100%, 94%)',
         'gray-100': 'hsl(223, 64%, 98%)',
         'gray-200': 'hsl(220, 14%, 75%)',
