@@ -4,12 +4,21 @@ import { Link } from "react-router-dom";
 
 function Checkout() {
   const items = useCartStore((state) => state.cartItems);
+  const changeQuantity = useCartStore((state) => state.changeQuantity);
   const total = items?.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0,
   );
 
   if (!items?.length) return <div>Cart is empty</div>;
+
+  const decreaseQuantity = (id: string) => {
+    changeQuantity(id, -1);
+  };
+
+  const increaseQuantity = (id: string) => {
+    changeQuantity(id, 1);
+  };
 
   return (
     <div>
@@ -69,9 +78,9 @@ function Checkout() {
                           <button
                             className="bg-primary-light w-6 h-8 text-white hover:bg-primary-hover focus:outline-none disabled:bg-gray-200 disabled:text-gray-500"
                             disabled={item.quantity === 1}
-                            // onClick={() =>
-                            //   item.quantity > 1 && item.decreaseQuantity()
-                            // }
+                            onClick={() =>
+                              item.quantity > 1 && decreaseQuantity(item.cartId)
+                            }
                           >
                             -
                           </button>
@@ -80,14 +89,14 @@ function Checkout() {
                           </span>
                           <button
                             className="bg-primary text-white w-6 h-8 hover:bg-primary-hover focus:outline-none"
-                            // onClick={() => item.increaseQuantity()}
+                            onClick={() => increaseQuantity(item.cartId)}
                           >
                             +
                           </button>
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 md:px-6">
-                        ${item.price}
+                        ${item.price * item.quantity}
                       </td>
                     </tr>
                   ))}
